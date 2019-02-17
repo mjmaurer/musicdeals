@@ -1,5 +1,5 @@
 constants.py
-
+*.pyc
 __pycache__/
 venv/
 .vscode/
