@@ -1,4 +1,4 @@
-constants.py
+*.swp
 *.pyc
 __pycache__/
 venv/
