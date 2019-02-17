@@ -9,7 +9,7 @@ def main():
                          client_id=constants.PEDALS_ID,
                          client_secret=constants.PEDALS_SECRET)
 
-    subreddit = reddit.subreddit('PedalDeals')
+    subreddit = reddit.subreddit('PedalDeals+SynthDeals')
     for submission in subreddit.stream.submissions():
         process_submission(submission)
 
