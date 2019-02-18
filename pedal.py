@@ -9,17 +9,15 @@ def main():
                          client_id=constants.PEDALS_ID,
                          client_secret=constants.PEDALS_SECRET)
 
-    currentTime = datetime.datetime.now()
     subreddit = reddit.subreddit('PedalDeals+SynthDeals')
     for submission in subreddit.stream.submissions():
-        process_submission(submission, currentTime)
+        process_submission(submission)
 
 
-def process_submission(submission, beginTime):
+def process_submission(submission):
     try:
         rating = int(re.search('\\d+%$', submission.title).group(0).strip('%'))
-        postTime = datetime.datetime.fromtimestamp(submission.created)
-        if (rating > 97 and postTime > beginTime):
+        if (rating > 97):
             sendText(submission)
     except Exception as e:
         print('Bad title?: ' + str(submission.title))
