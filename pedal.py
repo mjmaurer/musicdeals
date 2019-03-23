@@ -32,6 +32,8 @@ def sendText(submission):
         server.login(constants.GMAIL_USER, constants.GMAIL_PASS)
         server.sendmail(constants.GMAIL_USER, constants.GMAIL_TARGET,
                         submission.title + ' \n ' + submission.url)
+        server.sendmail(constants.GMAIL_USER, 'lydiamhuggins@gmail.com',
+                        submission.title + ' \n ' + submission.url)
     except Exception as e:
         print('Error occurred: ' + str(e))
 
