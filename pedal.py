@@ -18,7 +18,7 @@ def process_submission(submission, startTime):
     try:
         rating = int(re.search('\\d+%$', submission.title).group(0).strip('%'))
         postTime = datetime.datetime.fromtimestamp(submission.created)
-        if (rating > 97 and postTime > startTime):
+        if (rating > 98 and postTime > startTime):
             print('sending text')
             print('start time: ' + startTime.strftime('%Y-%m-%d %H:%M:%S.%f %Z'))
             print('post time: ' + postTime.strftime('%Y-%m-%d %H:%M:%S.%f %Z'))
@@ -33,6 +33,8 @@ def sendText(submission):
         server.sendmail(constants.GMAIL_USER, constants.GMAIL_TARGET,
                         submission.title + ' \n ' + submission.url)
         server.sendmail(constants.GMAIL_USER, 'lydiamhuggins@gmail.com',
+                        submission.title + ' \n ' + submission.url)
+        server.sendmail(constants.GMAIL_USER, 'elias.spector.zabusky@gmail.com',
                         submission.title + ' \n ' + submission.url)
     except Exception as e:
         print('Error occurred: ' + str(e))
